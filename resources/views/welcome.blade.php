@@ -36,7 +36,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="">
+            <form method="POST" action="{{ route('receipt.create') }}">
                 <table>
                     <thead>
                         <tr>
@@ -111,7 +111,7 @@
                                 Estimated Price
                             </td>
                             <td>
-                                RM<input name="Cost" type="text"><br>
+                                RM<input name="cost" type="text"><br>
                             </td>
                         </tr>
                         <tr>
@@ -119,7 +119,7 @@
                                 Prepayment
                             </td>
                             <td>
-                                RM<input name="Cost" type="text"><br>
+                                RM<input name="prepayment" type="text"><br>
                             </td>
                         </tr>
                     </tbody>
