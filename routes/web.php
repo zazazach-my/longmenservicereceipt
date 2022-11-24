@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ReceiptController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,4 +21,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::post('/welcome', [App\Http\Controllers\ReceiptController::class, 'create'])->name('receipt.create');
+Route::post('/welcome', [ReceiptController::class, 'create'])->name('receipt.create');
+

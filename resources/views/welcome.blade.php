@@ -37,6 +37,7 @@
             @endif
 
             <form method="POST" action="{{ route('receipt.create') }}">
+                @csrf
                 <table>
                     <thead>
                         <tr>
@@ -126,7 +127,9 @@
                 </table>
                 <div>
                     <div>
-                        <input type="submit" value="Submit">
+                        <button class="btn btn-primary">
+                            Submit
+                        </button>
                     </div>
                 </div>
 

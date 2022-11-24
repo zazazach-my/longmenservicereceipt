@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Receipt;
+use App\Models\Receipt;
 
 class ReceiptController extends Controller
 {
@@ -38,6 +38,7 @@ class ReceiptController extends Controller
         dd($receipt);
         $receipt->save();
 
-        return view('home');
+        return redirect('home');
     }
+
 }
