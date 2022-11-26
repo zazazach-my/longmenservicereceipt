@@ -38,7 +38,7 @@ class ReceiptController extends Controller
 
     
         if ($request->file('item_photo')) {
-            $image_path = $request->file('item_photo')->store('public/itemImages');
+            $image_path = $request->file('item_photo')->store('uploads','public');
         }
         else {
             $image_path = "";
@@ -56,13 +56,10 @@ class ReceiptController extends Controller
         $receipt->remark = $request->post('remark');
         $receipt->cost = $request->post('cost');
         $receipt->prepayment = $request->post('prepayment');
-        $receipt->status_id = $request->post('status_id');
-
-        dd($receipt);
 
         $receipt->save();
 
-        return view('/');
+        return redirect('/r/create');
     }
 
 }

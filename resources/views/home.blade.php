@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-9 pt-5">
-            <a href="">Add New Receipt</a>
+            <a href="/r/create">Add New Receipt</a>
         </div>
     </div>
 </div>

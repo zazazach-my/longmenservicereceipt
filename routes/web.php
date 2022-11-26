@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReceiptController;
+use App\Http\Controllers\PDFController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,4 +26,6 @@ Route::get('/r/create',[ReceiptController::class,'create']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('/r',[ReceiptController::class, 'store']);
+
+Route::get('/generate-invoice-pdf', [PDFController::class,'generateInvoicePDF']);
 
