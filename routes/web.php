@@ -23,5 +23,5 @@ Route::get('/r/create',[ReceiptController::class,'create']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::post('/', [ReceiptController::class, 'create'])->name('receipt.create');
+Route::post('/r',[ReceiptController::class, 'store']);
 
