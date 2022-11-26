@@ -35,7 +35,6 @@ class ReceiptController extends Controller
         $receipt->cost = $request->post('cost');
         $receipt->prepayment = $request->post('prepayment');
         $receipt->status_id = $request->post('status_id');
-        dd($receipt);
         $receipt->save();
 
         return redirect('home');
