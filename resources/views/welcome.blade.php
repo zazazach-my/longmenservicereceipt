@@ -36,7 +36,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('receipt.create') }}">
+            <form method="POST" action="{{ route('receipt.create') }}" enctype="multipart/form-data">
                 @csrf
                 <table>
                     <thead>

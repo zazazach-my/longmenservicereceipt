@@ -12,7 +12,11 @@ class ReceiptController extends Controller
         return view('home');
     }
 
-    public function create(Request $request)
+    public function create(){
+        return view('receipts.create');
+    }
+
+    public function store(Request $request)
     {
 
         if ($request->file('image')) {
@@ -37,7 +41,7 @@ class ReceiptController extends Controller
         $receipt->status_id = $request->post('status_id');
         $receipt->save();
 
-        return redirect('home');
+        return view('/');
     }
 
 }
