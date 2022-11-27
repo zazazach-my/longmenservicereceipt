@@ -15,9 +15,9 @@ class CreateReceiptsTable extends Migration
     {
         Schema::create('receipts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('user_id');
+            $table->string('user_name');
             $table->string('service_type')->nullable();
-            $table->string('name',150)->nullable();
+            $table->string('customer_name',150)->nullable();
             $table->string('contact_number');
             $table->string('brand')->nullable();
             $table->string('warranty_card')->nullable();
@@ -29,7 +29,6 @@ class CreateReceiptsTable extends Migration
             $table->timestamps();
 
             $table->index('status_id');
-            $table->index('user_id');
         });
     }
 

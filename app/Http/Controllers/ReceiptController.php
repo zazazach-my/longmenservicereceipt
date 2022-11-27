@@ -47,19 +47,19 @@ class ReceiptController extends Controller
         $receipt = new Receipt();
 
         $receipt->service_type = $request->post('service_type');
-        $receipt->name = $request->post('customer_name');
+        $receipt->customer_name = $request->post('customer_name');
         $receipt->contact_number = $request->post('contact_number');
         $receipt->brand = $request->post('brand');
         $receipt->warranty_card = $request->post('warranty_card');
-        $receipt->user_id = Auth::id();
+        $receipt->user_name = Auth::user()->name;
         $receipt->image = $image_path;
         $receipt->remark = $request->post('remark');
         $receipt->cost = $request->post('cost');
         $receipt->prepayment = $request->post('prepayment');
-
+        
         $receipt->save();
 
-        return redirect('/r/create');
+        return redirect('/r-pdf');
     }
 
 }

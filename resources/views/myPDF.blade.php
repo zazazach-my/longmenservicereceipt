@@ -16,11 +16,20 @@
     .pt-5{
         padding-top:5px;
     }
+    .pt-10{
+        padding-top:10px;
+    }
     .mt-10{
         margin-top:10px;
     }
+    .mb-10{
+        margin-bottom:10px;
+    }
     .text-center{
         text-align:center !important;
+    }
+    .text-right{
+        text-align:right !important;
     }
     .w-100{
         width: 100%;
@@ -28,8 +37,17 @@
     .w-50{
         width:50%;   
     }
+    .w-40{
+        width:40%;   
+    }
     .w-85{
         width:85%;   
+    }
+    .w-30{
+        width:30%;   
+    }
+    .w-70{
+        width:70%;   
     }
     .w-15{
         width:15%;   
@@ -85,19 +103,23 @@
     }
 </style>
 <body>
-<div class="head-title">
-    <h1 class="text-center m-0 p-0">Invoice</h1>
+<div>
+    <div class="w-100 float-left">
+        <p><h5>KLANG LONGMEN (M) SDN.BHD.</h5></p>
+        <p>(486132-M)</p>
+    </div>
 </div>
 <div class="add-detail mt-10">
-    <div class="w-50 float-left mt-10">
-        <p class="m-0 pt-5 text-bold w-100">Invoice Id - <span class="gray-color">#6</span></p>
-        <p class="m-0 pt-5 text-bold w-100">Order Id - <span class="gray-color">162695CDFS</span></p>
-        <p class="m-0 pt-5 text-bold w-100">Order Date - <span class="gray-color">03-06-2022</span></p>
+    <div class="w-30 float-left mt-10">
     </div>
-    <div class="w-50 float-left logo mt-10">
-        <img src="https://www.nicesnippets.com/image/imgpsh_fullsize.png"> <span>Nicesnippets.com</span>     
+    <div class="w-40 float-left mt-10">
+        <h3 class="text-center m-0 p-0">修理单<br>SERVICE RECEIPT</h3>
     </div>
-    <div style="clear: both;"></div>
+    <div class="w-30 float-left mt-10">
+        <p class="m-0 pt-5 text-right text-bold w-100">Receipt No - <span class="gray-color">202211-1</span></p>
+        <p class="m-0 pt-5 text-right text-bold w-100">Date - <span class="gray-color">31/12/2022</span></p>
+        <p class="m-0 pt-5 text-right text-bold w-100"><br><span class="gray-color"></span></p>
+    </div>
 </div>
 <div class="table-section bill-tbl w-100 mt-10">
     <table class="table w-100 mt-10">

@@ -27,5 +27,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::post('/r',[ReceiptController::class, 'store']);
 
-Route::get('/generate-invoice-pdf', [PDFController::class,'generateInvoicePDF']);
+Route::get('/r-pdf', [PDFController::class,'generateInvoicePDF']);
 
