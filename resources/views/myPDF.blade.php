@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Larave Generate Invoice PDF - Nicesnippest.com</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style type="text/css">
     body{
@@ -101,14 +102,27 @@
     .total-right p{
         padding-right:20px;
     }
+    .line{
+        width: 100%; 
+        text-align: right; 
+        border-bottom: 1px solid #000; 
+        line-height: 0.1em;
+        margin: 5px 0 10px; 
+    } 
+
+    .line-span { 
+        background:#fff; 
+        padding:0 10px; 
+    }
 </style>
 <body>
-<div>
-    <div class="w-100 float-left">
-        <p><h5>KLANG LONGMEN (M) SDN.BHD.</h5></p>
-        <p>(486132-M)</p>
+<div class="w-100">
+    <div class="w-20 float-left ">
+        <div><h4 class="m-0">KLANG LONGMEN (M) SDN.BHD.</h4><h6 class="m-0 line" ><span class="line-span">(486132-M)</span></h6><h5 class="m-0">Shaw Centrepoint, G-21, Jalan Melayu,<br> 41400 Klang, Selangor, Malaysia.<br><i class="fa fa-whatsapp" style="font-size:24px"></i> Whatsapp: +6011-56480 693</h5></div>
     </div>
+    <div class="w-80 float-left"></div>
 </div>
+<div style="clear: both;"></div>
 <div class="add-detail mt-10">
     <div class="w-30 float-left mt-10">
     </div>
@@ -124,8 +138,8 @@
 <div class="table-section bill-tbl w-100 mt-10">
     <table class="table w-100 mt-10">
         <tr>
-            <th class="w-50">From</th>
-            <th class="w-50">To</th>
+            <td class="w-50">From</td>
+            <td class="w-50">To</td>
         </tr>
         <tr>
             <td>
