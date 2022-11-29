@@ -160,7 +160,7 @@
         <div class="row">
             <div class="col-8 offset-2">
                 <div class="row mb-3">
-                    <label for="prepayment" class="col-md-4 col-form-label text-md-end">{{ __('Prepayment') }}</label>
+                    <label for="prepayment" class="col-md-4 col-form-label text-md-end">{{ __('Deposit') }}</label>
 
                     <div class="col-md-6">
                         <input id="prepayment" type="text" class="form-control @error('prepayment') is-invalid @enderror" name="prepayment" value="{{ old('prepayment') }}" required autocomplete="prepayment" autofocus>
