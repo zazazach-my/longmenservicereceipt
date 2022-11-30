@@ -30,6 +30,7 @@ class ReceiptController extends Controller
             'brand' => 'required',
             'warranty_card' => 'required',
             'item_photo' => '',
+            'item_photo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'remark' => 'required',
             'cost' => 'required',
             'prepayment' => 'required',
@@ -38,11 +39,19 @@ class ReceiptController extends Controller
 
     
         if ($request->file('item_photo')) {
-            $image_path = $request->file('item_photo')->store('uploads','public');
+            // $image_path = $request->file('item_photo')->store('uploads','public');
+            foreach($request->file('item_photo') as $image)
+            {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/image/',$name);
+                $image_path[] = $name;
+            }
         }
         else {
             $image_path = "";
         }
+
+        dd(request()->all());
 
         $receipt = new Receipt();
 
@@ -52,7 +61,7 @@ class ReceiptController extends Controller
         $receipt->brand = $request->post('brand');
         $receipt->warranty_card = $request->post('warranty_card');
         $receipt->user_name = Auth::user()->name;
-        $receipt->image = $image_path;
+        $receipt->image = json_encode($image_path);
         $receipt->remark = $request->post('remark');
         $receipt->cost = $request->post('cost');
         $receipt->prepayment = $request->post('prepayment');

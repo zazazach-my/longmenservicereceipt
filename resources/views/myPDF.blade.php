@@ -161,9 +161,9 @@
         </div>
         <div class="w-80 float-right">
             <h1 class="text-right ">修理单<br>Service Receipt</h1>
-            <p class="m-0 pt-5 text-right text-bold w-100">Receipt No - <span class="gray-color">202211-1</span></p>
-            <p class="m-0 pt-5 text-right text-bold w-100">Date - <span class="gray-color">31/12/2022</span></p>
-            <p class="m-0 pt-5 text-right text-bold w-100">Staff Name - <span class="gray-color">Kajib</span></p>
+            <p class="m-0 pt-5 text-right text-bold w-100">Receipt No - <span class="gray-color">{{$invoicenumber}}</span></p>
+            <p class="m-0 pt-5 text-right text-bold w-100">Date - <span class="gray-color">{{$invoicedate}}</span></p>
+            <p class="m-0 pt-5 text-right text-bold w-100">Staff Name - <span class="gray-color">{{$user_name}}</span></p>
         </div>
     </div>
     <div style="clear: both;"></div>
@@ -173,21 +173,21 @@
             <tr>
                 <td class="w-50">
                     <div class="text-bold">Name 姓名:</div>
-                    <div class="text-center mt-10" style="font-size: 20px;">Chong Teck Lam</div>
+                    <div class="text-center mt-10" style="font-size: 20px;">{{$customer_name}}</div>
                 </td>
                 <td class="w-50">
                     <div class="text-bold">Brand 牌子:</div>
-                    <div class="text-center mt-10" style="font-size: 20px;">Seiko</div>
+                    <div class="text-center mt-10" style="font-size: 20px;">{{$brand}}</div>
                 </td>
             </tr>
             <tr>
                 <td class="w-50">
                     <div class="text-bold">Contact Number 联系号码:</div>
-                    <div class="text-center  mt-10" style="font-size: 20px;">01133069690</div>
+                    <div class="text-center  mt-10" style="font-size: 20px;">{{$customer_number}}</div>
                 </td>
                 <td class="w-50">
                     <div class="text-bold">Warranty Card 保证书：</div>
-                    <div class="text-center mt-10" style="font-size: 20px;">No</div>
+                    <div class="text-center mt-10" style="font-size: 20px;">{{$warranty_card}}</div>
                 </td>
             </tr>
         </table>
@@ -197,8 +197,7 @@
             <tr>
                 <td class="w-50 topleft" rowspan="2">
                     <div class="text-bold">REMARKS 注明:</div>
-                    <div class="text-center  mt-10" style="font-size: 20px;">Images of the item are saved in the system<br> - Battery Replacement ( Not yet Paid ) <br>- Service ( TBC ) </h3></div>
-                    <div class="text-center  mt-10" style="font-size: 20px;">Images of the item are saved in the system<br> - Battery Replacement ( Not yet Paid ) <br>- Service ( TBC ) </h3></div>
+                    <div class="text-center  mt-10" style="font-size: 20px;">{{$remark}}</div>
                 </td>
                 <td class="w-50">
                     <div class="total-part">
@@ -208,8 +207,8 @@
                             <p>Balance 未结余额 -</p>
                         </div>
                         <div class="total-right w-30 float-left text-bold" align="right">
-                            <p>TBC</p>
-                            <p>RM 20</p>
+                            <p>{{$cost}}</p>
+                            <p>{{$prepayment}}</p>
                             <p>TBC</p>
                         </div>
                         <div style="clear: both;"></div>
