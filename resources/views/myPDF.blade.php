@@ -195,11 +195,11 @@
     <div class="table-section bill-tbl w-100 mt-10">
         <table class="table w-100 mt-10">
             <tr>
-                <td class="w-50 topleft" rowspan="2">
+                <td class="w-50 topleft" rowspan="2" height="370">
                     <div class="text-bold">REMARKS 注明:</div>
-                    <div class="text-center  mt-10" style="font-size: 20px;">{{$remark}}</div>
+                    <div class="text-center  mt-10" style="font-size: 20px;"><pre><code>{{$remark}}</pre></code></div>
                 </td>
-                <td class="w-50">
+                <td class="w-50" height="370">
                     <div class="total-part">
                         <div class="total-left w-70 float-left" align="right">
                             <p>Estimated Price 预估价格 - </p>

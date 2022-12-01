@@ -91,7 +91,7 @@
                     <div class="col-md-6">
                         <select id="warranty_card" class="form-control @error('warranty_card') is-invalid @enderror" name="warranty_card" value="{{ old('warranty_card') }}" required autocomplete="warranty_card" autofocus>
                             <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="no" selected>No</option>
                             <option value="expired">Expired</option>
                         </select>
                         @error('warranty_card')

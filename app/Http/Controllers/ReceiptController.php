@@ -37,21 +37,6 @@ class ReceiptController extends Controller
 
         ]);
 
-    
-        if ($request->file('item_photo')) {
-
-            // $image_path = $request->file('item_photo')->store('uploads','public');
-            foreach($request->file('item_photo') as $image)
-            {
-                $image_path[] = $image->store('uploads','public');
-            }
-        }
-        else {
-            $image_path = "";
-        }
-
-        
-
         $receipt = new Receipt();
 
         $receipt->service_type = $request->post('service_type');
@@ -60,10 +45,27 @@ class ReceiptController extends Controller
         $receipt->brand = $request->post('brand');
         $receipt->warranty_card = $request->post('warranty_card');
         $receipt->user_name = Auth::user()->name;
-        $receipt->image = json_encode($image_path);
         $receipt->remark = $request->post('remark');
         $receipt->cost = $request->post('cost');
         $receipt->prepayment = $request->post('prepayment');
+
+        if ($request->file('item_photo')) {
+
+            // $image_path = $request->file('item_photo')->store('uploads','public');
+            foreach($request->file('item_photo') as $image)
+            {
+                $image_path[] = $image->store('uploads','public');
+            }
+
+            $receipt->remark = $receipt->remark."\r\n images of the item are saved in the system";
+
+        }
+        else {
+            $image_path = "";
+        }
+
+        $receipt->image = json_encode($image_path);
+
         
         $receipt->save();
 
