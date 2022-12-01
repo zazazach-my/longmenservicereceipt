@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <div class="container">
     <div class="row">
         <h1>Add New Posts</h1>
@@ -107,8 +108,29 @@
             <div class="col-8 offset-2">
                 <div class="row mb-3">
                     <label for="item_photo" class="col-md-4 col-form-label text-md-end">{{ __('Photo of The Item') }}</label>
-
                     <div class="col-md-6">
+                        <div class="input-group control-group increment" >
+                            <input type="file" name="item_photo[]" class="form-control @error('item_photo') is-invalid @enderror" value="{{ old('item_photo') }}" accept=".pdf,.jpg,.png,.jpeg,image/.jpg,image/.pdf,image/.jpeg,image/.png">
+                            <div class="input-group-btn"> 
+                                <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                            </div>
+                            </div>
+                            <div class="clone hide">
+                            <div class="control-group input-group" style="margin-top:10px">
+                                <input type="file" name="item_photo[]" class="form-control @error('item_photo') is-invalid @enderror" value="{{ old('item_photo') }}" accept=".pdf,.jpg,.png,.jpeg,image/.jpg,image/.pdf,image/.jpeg,image/.png">
+                                <div class="input-group-btn"> 
+                                <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+                                </div>
+                            </div>
+                            </div>
+
+                            @error('item_photo')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                    </div>
+                    <!-- <div class="col-md-6">
                         <input id="item_photo" type="file" class="form-control-file @error('item_photo') is-invalid @enderror" name="item_photo" value="{{ old('item_photo') }}" accept=".pdf,.jpg,.png,.jpeg,image/.jpg,image/.pdf,image/.jpeg,image/.png" multiple>
 
                         @error('item_photo')
@@ -116,7 +138,7 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div> 
@@ -180,4 +202,16 @@
         </div>
     </form>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $(".btn-success").click(function(){ 
+          var html = $(".clone").html();
+          $(".increment").after(html);
+      });
+      $("body").on("click",".btn-danger",function(){ 
+          $(this).parents(".control-group").remove();
+      });
+    });
+</script>
 @endsection

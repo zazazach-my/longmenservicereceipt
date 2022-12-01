@@ -39,19 +39,18 @@ class ReceiptController extends Controller
 
     
         if ($request->file('item_photo')) {
+
             // $image_path = $request->file('item_photo')->store('uploads','public');
             foreach($request->file('item_photo') as $image)
             {
-                $name=$image->getClientOriginalName();
-                $image->move(public_path().'/image/',$name);
-                $image_path[] = $name;
+                $image_path[] = $image->store('uploads','public');
             }
         }
         else {
             $image_path = "";
         }
 
-        dd(request()->all());
+        
 
         $receipt = new Receipt();
 
