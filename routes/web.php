@@ -21,11 +21,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/r/create',[ReceiptController::class,'create']);
+Route::get('/r/create',[ReceiptController::class,'create'])->name('receipt.create');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::post('/r',[ReceiptController::class, 'store']);
+Route::post('/r',[ReceiptController::class, 'store'])->name('receipt.store');
 
-Route::get('/r-pdf', [PDFController::class,'generateInvoicePDF']);
+Route::get('/r-pdf', [PDFController::class,'generateInvoicePDF'])->name('receipt.pdf');
 

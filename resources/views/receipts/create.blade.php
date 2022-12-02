@@ -7,7 +7,7 @@
         <h1>Add New Posts</h1>
     </div>
 
-    <form action="/r" enctype="multipart/form-data" method="post">
+    <form action="{{ route('receipt.store') }}" enctype="multipart/form-data" method="post">
         @csrf
         <div class="row">
             <div class="col-8 offset-2">

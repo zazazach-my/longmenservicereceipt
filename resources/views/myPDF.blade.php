@@ -157,7 +157,7 @@
 <body>
     <div class="w-100"> 
         <div class="w-20 float-left ">
-            <div><span class="m-0 text-bold ">KLANG LONGMEN (M) SDN.BHD.</span><h6 class="m-0 line-right" ><span class="line-span">(486132-M)</span></h6><span class="m-0 notice">Shaw Centrepoint, G-21, Jalan Melayu,<br> 41400 Klang, Selangor, Malaysia.<br><i class="fa fa-whatsapp" style="font-size:24px"></i> Whatsapp: +6011 - 564 80693</sapi_windows_cp_conv></div>
+            <div><span class="m-0 text-bold " style="font-size:20px">KLANG LONGMEN (M) SDN.BHD.</span><h6 class="m-0 line-right" ><span class="line-span">(486132-M)</span></h6><span class="m-0" style="font-size:15px">Shaw Centrepoint, G-21, Jalan Melayu,<br> 41400 Klang, Selangor, Malaysia.<br><i class="fa fa-whatsapp" style="font-size:24px"></i> Whatsapp: +6011 - 564 80693</sapi_windows_cp_conv></div>
         </div>
         <div class="w-80 float-right">
             <h1 class="text-right ">修理单<br>Service Receipt</h1>

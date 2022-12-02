@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Receipt;
 use Auth;
+use Image;
 
 class ReceiptController extends Controller
 {
@@ -23,6 +24,7 @@ class ReceiptController extends Controller
 
     public function store(Request $request)
     {   
+        // dd($request->all());
         $request -> validate([
             'service_type' => 'required',
             'customer_name' => 'required',
@@ -30,13 +32,11 @@ class ReceiptController extends Controller
             'brand' => 'required',
             'warranty_card' => 'required',
             'item_photo' => '',
-            'item_photo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'remark' => 'required',
             'cost' => 'required',
             'prepayment' => 'required',
 
         ]);
-
         $receipt = new Receipt();
 
         $receipt->service_type = $request->post('service_type');
@@ -51,10 +51,12 @@ class ReceiptController extends Controller
 
         if ($request->file('item_photo')) {
 
-            // $image_path = $request->file('item_photo')->store('uploads','public');
-            foreach($request->file('item_photo') as $image)
-            {
-                $image_path[] = $image->store('uploads','public');
+            foreach($request->file('item_photo') as $image) 
+            {   
+                $destinationPath = storage_path('app\\public\\uploads\\');
+                $filename = Auth::user()->name.'-'.date('Ymd-his'). '.' . $image->getClientOriginalExtension();
+                $image_path[]=Image::make($image)->resize(1000, 1000)->save($destinationPath.$filename,90);
+                // $image_path[] = $image->store('uploads','public');
             }
 
             $receipt->remark = $receipt->remark."\r\n images of the item are saved in the system";
@@ -69,7 +71,7 @@ class ReceiptController extends Controller
         
         $receipt->save();
 
-        return redirect('/r-pdf');
+        return redirect()->route('receipt.pdf');
     }
 
 }
