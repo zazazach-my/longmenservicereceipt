@@ -153,89 +153,211 @@
     .notice{
         font-size:13px;
     }
+
+    @media print 
+        {
+            .noPrint{
+                display:none;
+            }
+
+            @page{
+                size: A5 portrait;
+            }
+
+        }
+
+    pre {
+        white-space: pre-wrap;       /* Since CSS 2.1 */
+        white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+        white-space: -pre-wrap;      /* Opera 4-6 */
+        white-space: -o-pre-wrap;    /* Opera 7 */
+        word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    }
+
+    .btn {
+        appearance: none;
+            -webkit-appearance: none;
+        font-family: sans-serif;
+        cursor: pointer;
+        padding: 12px;
+        min-width: 100px;
+        border: 0px;
+            -webkit-transition: background-color 100ms linear;
+            -ms-transition: background-color 100ms linear;
+            transition: background-color 100ms linear;
+        }
+
+        .btn:focus, .btn.focus {
+        outline: 0;
+        }
+
+        .btn-round-1 {
+        border-radius: 8px;
+        }
+
+        .btn-round-2 {
+        border-radius: 20px;
+        }
+
+        .btn-dark {
+        background: #000;
+        color: #ffffff;
+        }
+
+        .btn-dark:hover {
+        background: #212121;
+        color: #ffffff;
+        }
+
+        .btn-light {
+        background: #ededed;
+        color: #000;
+        }
+
+        .btn-light:hover {
+        background: #dbdbdb;
+        color: #000;
+        }
+
+        .btn-primary {
+        background: #3498db;
+        color: #ffffff;
+        }
+
+        .btn-primary:hover {
+        background: #2980b9;
+        color: #ffffff;
+        }
+
+        .btn-success {
+        background: #2ecc71;
+        color: #ffffff;
+        }
+
+        .btn-success:hover {
+        background: #27ae60;
+        color: #ffffff;
+        }
+
+        .btn-warning {
+        background: #f1c40f;
+        color: #ffffff;
+        }
+
+        .btn-warning:hover {
+        background: #f39c12;
+        color: #ffffff;
+        }
+
+        .btn-danger {
+        background: #e74c3c;
+        color: #ffffff;
+        }
+
+        .btn-danger:hover {
+        background: #c0392b;
+        color: #ffffff;
+        }
+
 </style>
 <body>
-    <div class="w-100"> 
-        <div class="w-20 float-left ">
-            <div><span class="m-0 text-bold " style="font-size:20px">KLANG LONGMEN (M) SDN.BHD.</span><h6 class="m-0 line-right" ><span class="line-span">(486132-M)</span></h6><span class="m-0" style="font-size:15px">Shaw Centrepoint, G-21, Jalan Melayu,<br> 41400 Klang, Selangor, Malaysia.<br><i class="fa fa-whatsapp" style="font-size:24px"></i> Whatsapp: +6011 - 564 80693</sapi_windows_cp_conv></div>
+    <div class="invoice-box">
+        <div class="w-100"> 
+            <div class="w-20 float-left ">
+                <div><span class="m-0 text-bold " style="font-size:20px">KLANG LONGMEN (M) SDN.BHD.</span><h6 class="m-0 line-right" ><span class="line-span">(486132-M)</span></h6><span class="m-0" style="font-size:15px">Shaw Centrepoint, G-21, Jalan Melayu,<br> 41400 Klang, Selangor, Malaysia.<br><i class="fa fa-whatsapp" style="font-size:24px"></i> Whatsapp: +6011 - 564 80693</sapi_windows_cp_conv></div>
+            </div>
+            <div class="w-80 float-right">
+                <h1 class="text-right ">修理单<br>Service Receipt</h1>
+                <p class="m-0 pt-5 text-right text-bold w-100">Receipt No - <span class="gray-color">{{$invoicenumber}}</span></p>
+                <p class="m-0 pt-5 text-right text-bold w-100">Date - <span class="gray-color">{{$invoicedate}}</span></p>
+                <p class="m-0 pt-5 text-right text-bold w-100">Staff Name - <span class="gray-color">{{$user_name}}</span></p>
+            </div>
         </div>
-        <div class="w-80 float-right">
-            <h1 class="text-right ">修理单<br>Service Receipt</h1>
-            <p class="m-0 pt-5 text-right text-bold w-100">Receipt No - <span class="gray-color">{{$invoicenumber}}</span></p>
-            <p class="m-0 pt-5 text-right text-bold w-100">Date - <span class="gray-color">{{$invoicedate}}</span></p>
-            <p class="m-0 pt-5 text-right text-bold w-100">Staff Name - <span class="gray-color">{{$user_name}}</span></p>
-        </div>
-    </div>
-    <div style="clear: both;"></div>
+        <div style="clear: both;"></div>
 
-    <div class="table-section bill-tbl w-100 mt-10">
-        <table class="table w-100 mt-10">
-            <tr>
-                <td class="w-50">
-                    <div class="text-bold">Name 姓名:</div>
-                    <div class="text-center mt-10" style="font-size: 20px;">{{$customer_name}}</div>
-                </td>
-                <td class="w-50">
-                    <div class="text-bold">Brand 牌子:</div>
-                    <div class="text-center mt-10" style="font-size: 20px;">{{$brand}}</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="w-50">
-                    <div class="text-bold">Contact Number 联系号码:</div>
-                    <div class="text-center  mt-10" style="font-size: 20px;">{{$customer_number}}</div>
-                </td>
-                <td class="w-50">
-                    <div class="text-bold">Warranty Card 保证书：</div>
-                    <div class="text-center mt-10" style="font-size: 20px;">{{$warranty_card}}</div>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="table-section bill-tbl w-100 mt-10">
-        <table class="table w-100 mt-10">
-            <tr>
-                <td class="w-50 topleft" rowspan="2" height="370">
-                    <div class="text-bold">REMARKS 注明:</div>
-                    <div class="text-center  mt-10" style="font-size: 20px;"><pre><code>{{$remark}}</pre></code></div>
-                </td>
-                <td class="w-50" height="370">
-                    <div class="total-part">
-                        <div class="total-left w-70 float-left" align="right">
-                            <p>Estimated Price 预估价格 - </p>
-                            <p>Deposit 订金 - </p>
-                            <p>Balance 未结余额 -</p>
-                        </div>
-                        <div class="total-right w-30 float-left text-bold" align="right">
-                            <p>{{$cost}}</p>
-                            <p>{{$prepayment}}</p>
-                            <p>TBC</p>
-                        </div>
-                        <div style="clear: both;"></div>
-                    </div> 
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="w-100 p-5"> 
-        <div class="w-48 float-left notice">
-            <h3>CONDITIONS OF SERVICE</h3>
-            <li>Goods sold are not returnable or exchangable.</li>
-            <li>Repair Warranty - 90 days on the manufacture defects. Physical damage and Water damage are not included</li>
-            <li>Please inspect your goods immediately and inform us any issue that you notice upon the collection of your goods from our store. We do not take responsibility for any progression in damage for your goods that have been damaged by liquid and physical impact. Although unlikely, opening the your goods could set off further damage and in some cases may be very serious and irreparable.</li>
-            <li>We shall notify you when your goods has been repaired and is available for collection from store. If the your goods has not been collected it will be kept for future collection. If necessary, we shall send a reminder and your goods will be recycled if not collected by day 60.
+        <div class="table-section bill-tbl w-100 mt-10">
+            <table class="table w-100 mt-10">
+                <tr>
+                    <td class="w-50">
+                        <div class="text-bold">Name 姓名:</div>
+                        <div class="text-center mt-10" style="font-size: 20px;">{{$customer_name}}</div>
+                    </td>
+                    <td class="w-50">
+                        <div class="text-bold">Brand 牌子:</div>
+                        <div class="text-center mt-10" style="font-size: 20px;">{{$brand}}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-50">
+                        <div class="text-bold">Contact Number 联系号码:</div>
+                        <div class="text-center  mt-10" style="font-size: 20px;">{{$customer_number}}</div>
+                    </td>
+                    <td class="w-50">
+                        <div class="text-bold">Warranty Card 保证书：</div>
+                        <div class="text-center mt-10" style="font-size: 20px;">{{$warranty_card}}</div>
+                    </td>
+                </tr>
+            </table>
         </div>
-        <div class="w-48 float-right notice">
-            <h3>服务条规</h3>
-            <li>售出的商品不可退换货。</li>
-            <li>维修保修 - 在90天期间有材质和制造的缺陷。不包括不当使用，意外损害或自然损耗（如电池）</li>
-            <li>在本店取货时，请立即检查您的物品，如发现有任何问题必须立刻告知我们。稍后您的物品因液体和意外或自然损耗而损坏，我们概不负责。尽管不太可能，但打开您的物品可能会引发进一步的损坏，在某些情况下可能会非常严重且无法弥补。</li>
-            <li>当您的物品已修好并可以从商店取货时，我们会通知您。我们将发送提醒，如果您的货物在第 60 天之前未被取走，我们将对其进行回收。</li>
+        <div class="table-section bill-tbl w-100 mt-10">
+            <table class="table w-100 mt-10">
+                <tr>
+                    <td class="w-50 topleft" rowspan="2" height="370">
+                        <div class="text-bold">REMARKS 注明:</div>
+                        <div class="text-center  mt-10" style="font-size: 20px; "><pre>{{$remark}}</pre></div>
+                    </td>
+                    <td class="w-50" height="370">
+                        <div class="total-part">
+                            <div class="total-left w-70 float-left" align="right">
+                                <p>Estimated Price 预估价格 - </p>
+                                <p>Deposit 订金 - </p>
+                                <p>Balance 未结余额 -</p>
+                            </div>
+                            <div class="total-right w-30 float-left text-bold" align="right">
+                                <p>{{$cost}}</p>
+                                <p>{{$prepayment}}</p>
+                                <p>TBC</p>
+                            </div>
+                            <div style="clear: both;"></div>
+                        </div> 
+                    </td>
+                </tr>
+            </table>
         </div>
-    </div>
-    <div style="clear: both;"></div>
+        <div class="w-100 p-5"> 
+            <div class="w-48 float-left notice">
+                <h3>CONDITIONS OF SERVICE</h3>
+                <li>Goods sold are not returnable or exchangable.</li>
+                <li>Repair Warranty - 90 days on the manufacture defects. Physical damage and Water damage are not included</li>
+                <li>Please inspect your goods immediately and inform us any issue that you notice upon the collection of your goods from our store. We do not take responsibility for any progression in damage for your goods that have been damaged by liquid and physical impact. Although unlikely, opening the your goods could set off further damage and in some cases may be very serious and irreparable.</li>
+                <li>We shall notify you when your goods has been repaired and is available for collection from store. If the your goods has not been collected it will be kept for future collection. If necessary, we shall send a reminder and your goods will be recycled if not collected by day 60.
+            </div>
+            <div class="w-48 float-right notice">
+                <h3>服务条规</h3>
+                <li>售出的商品不可退换货。</li>
+                <li>维修保修 - 在90天期间有材质和制造的缺陷。不包括不当使用，意外损害或自然损耗（如电池）</li>
+                <li>在本店取货时，请立即检查您的物品，如发现有任何问题必须立刻告知我们。稍后您的物品因液体和意外或自然损耗而损坏，我们概不负责。尽管不太可能，但打开您的物品可能会引发进一步的损坏，在某些情况下可能会非常严重且无法弥补。</li>
+                <li>当您的物品已修好并可以从商店取货时，我们会通知您。我们将发送提醒，如果您的货物在第 60 天之前未被取走，我们将对其进行回收。</li>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
 
-    <div class="line-center" style="margin-top: 30px;"><span class="line-span">Receipt was created on a computer and is valid without the signature.</span></div>
-    
+        <div class="line-center" style="margin-top: 30px;"><span class="line-span">Receipt was created on a computer and is valid without the signature.</span></div>
+
+    </div>
+
+    <div class="noPrint">
+            <hr>
+            
+            <div class="text-right">
+            
+                <a href="{{ route('home') }}"><button class="btn btn-danger">Close</button></a>
+
+                <button class="btn btn-primary" onclick="window.print();" style="margin-left: 10px" ">Print</button>
+            </div>
+
+            
+    </div>
+        
 </body>
 </html>
