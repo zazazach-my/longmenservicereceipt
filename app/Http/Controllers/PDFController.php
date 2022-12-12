@@ -29,13 +29,31 @@ class PDFController extends Controller
         $brand = $data_receipt['brand'];
         $remark = $data_receipt['remark'];
         $warranty_card = $data_receipt['warranty_card'];
-        $cost = $data_receipt['cost'];
-        $prepayment = $data_receipt['prepayment'];
+
+        if ($data_receipt['free_of_charge'] == 1 && $data_receipt['to_be_confirmed'] == 0){
+            $cost = "FOC";
+            $prepayment = "-";
+            $balance = "-";
+        }
+
+        if ($data_receipt['free_of_charge'] == 0 && $data_receipt['to_be_confirmed'] == 1){
+            $cost = "TBC";
+            $prepayment = $data_receipt['prepayment'];
+            $balance = "TBC";
+        }
+
+        if ($data_receipt['free_of_charge'] == 0 && $data_receipt['to_be_confirmed'] == 0){
+            $cost = $data_receipt['cost'];
+            $prepayment = $data_receipt['prepayment'];
+            $balance = $cost - $prepayment;
+        }
+
+        
         $user_name = $data_receipt['user_name'];
 
         // $pdf = PDF::loadView('myPDF');
         // return $pdf->download('nicesnippets.pdf');
 
-        return view('myPDF',compact('invoicenumber','invoicedate','customer_name','customer_number','brand','remark','warranty_card','warranty_card','cost','prepayment','user_name'));
+        return view('myPDF',compact('invoicenumber','invoicedate','customer_name','customer_number','brand','remark','warranty_card','warranty_card','cost','prepayment','user_name','balance'));
     }
 }

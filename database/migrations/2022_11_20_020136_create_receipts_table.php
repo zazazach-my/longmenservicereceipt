@@ -23,8 +23,8 @@ class CreateReceiptsTable extends Migration
             $table->string('warranty_card')->nullable();
             $table->string('image')->nullable();
             $table->text('remark');
-            $table->bigInteger('cost')->default(0);
-            $table->bigInteger('prepayment')->default(0);
+            $table->bigInteger('cost')->nullable();
+            $table->bigInteger('prepayment')->nullable();
             $table->char('status_id')->default(1);
             $table->timestamps();
 

@@ -6,6 +6,16 @@
     <div class="row">
         <h1>Add New Posts</h1>
     </div>
+    @if (count($errors) > 0)
+      <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+          @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
 
     <form action="{{ route('receipt.store') }}" enctype="multipart/form-data" method="post">
         @csrf
@@ -15,7 +25,7 @@
                     <label for="service_type" class="col-md-4 col-form-label text-md-end">{{ __('Service Type') }}</label>
 
                     <div class="col-md-6">
-                        <select id="service_type" class="form-control @error('service_type') is-invalid @enderror" name="service_type" value="{{ old('service_type') }}" required autocomplete="service_type" autofocus>
+                        <select id="service_type" class="form-control @error('service_type') is-invalid @enderror" name="service_type" value="{{ old('service_type') }}" required autocomplete="off" autofocus>
                             <option value="Repair">Repair</option>
                         </select>
                         
@@ -110,14 +120,14 @@
                     <label for="item_photo" class="col-md-4 col-form-label text-md-end">{{ __('Photo of The Item') }}</label>
                     <div class="col-md-6">
                         <div class="input-group control-group increment" >
-                            <input type="file" name="item_photo[]" class="form-control @error('item_photo') is-invalid @enderror" value="{{ old('item_photo') }}" accept=".pdf,.jpg,.png,.jpeg,image/.jpg,image/.pdf,image/.jpeg,image/.png">
+                            <input type="file" name="item_photo[]" class="form-control @error('item_photo') is-invalid @enderror" accept=".pdf,.jpg,.png,.jpeg,image/.jpg,image/.pdf,image/.jpeg,image/.png" value="{{ old('item_photo') }}">
                             <div class="input-group-btn"> 
                                 <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
                             </div>
                             </div>
                             <div class="clone hide">
                             <div class="control-group input-group" style="margin-top:10px">
-                                <input type="file" name="item_photo[]" class="form-control @error('item_photo') is-invalid @enderror" value="{{ old('item_photo') }}" accept=".pdf,.jpg,.png,.jpeg,image/.jpg,image/.pdf,image/.jpeg,image/.png">
+                                <input type="file" name="item_photo[]" class="form-control @error('item_photo') is-invalid @enderror" accept=".pdf,.jpg,.png,.jpeg,image/.jpg,image/.pdf,image/.jpeg,image/.png" value="{{ old('item_photo') }}">
                                 <div class="input-group-btn"> 
                                 <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                                 </div>
@@ -130,15 +140,6 @@
                             </span>
                             @enderror
                     </div>
-                    <!-- <div class="col-md-6">
-                        <input id="item_photo" type="file" class="form-control-file @error('item_photo') is-invalid @enderror" name="item_photo" value="{{ old('item_photo') }}" accept=".pdf,.jpg,.png,.jpeg,image/.jpg,image/.pdf,image/.jpeg,image/.png" multiple>
-
-                        @error('item_photo')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div> -->
                 </div>
             </div>
         </div> 
@@ -167,9 +168,29 @@
                     <label for="cost" class="col-md-4 col-form-label text-md-end">{{ __('Estimated Price') }}</label>
 
                     <div class="col-md-6">
-                        <input id="cost" type="text" class="form-control @error('cost') is-invalid @enderror" name="cost" value="{{ old('cost') }}" required autocomplete="cost" autofocus>
+                        <input id="cost" type="number" class="form-control @error('cost') is-invalid @enderror" name="cost" value="{{ old('cost') }}" autocomplete="off" required autofocus><br>
 
                         @error('cost')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                        <input type="hidden" name="free_of_charge" value="0"  autocomplete="off" autofocus>
+                        <input id="free_of_charge" type="checkbox" class=" @error('free_of_charge') is-invalid @enderror" name="free_of_charge" value="1"  autocomplete="off" autofocus>
+                        <label for="free_of_charge">FOC</label>
+
+                        @error('free_of_charge')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
+                        <input type="hidden" name="to_be_confirmed" value="0"  autocomplete="off" autofocus>
+                        <input id="to_be_confirmed" type="checkbox" class=" @error('to_be_confirmed') is-invalid @enderror" name="to_be_confirmed" value="1" autocomplete="off" autofocus>
+                        <label for="to_be_confirmed">TBC</label>
+
+                        @error('to_be_confirmed')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -185,7 +206,7 @@
                     <label for="prepayment" class="col-md-4 col-form-label text-md-end">{{ __('Deposit') }}</label>
 
                     <div class="col-md-6">
-                        <input id="prepayment" type="text" class="form-control @error('prepayment') is-invalid @enderror" name="prepayment" value="{{ old('prepayment') }}" required autocomplete="prepayment" autofocus>
+                        <input id="prepayment" type="number" class="form-control @error('prepayment') is-invalid @enderror" name="prepayment" value="{{ old('prepayment') }}" autocomplete="off" autofocus>
 
                         @error('prepayment')
                             <span class="invalid-feedback" role="alert">
@@ -212,6 +233,37 @@
       $("body").on("click",".btn-danger",function(){ 
           $(this).parents(".control-group").remove();
       });
+
+      $("#free_of_charge").change(function(){
+            if ($(this).prop('checked')) {
+                document.getElementById("cost").disabled = true;
+                document.getElementById("prepayment").disabled = true;
+                document.getElementById("to_be_confirmed").checked=false;
+                document.getElementById("cost").value="0";
+                document.getElementById("prepayment").value="0";
+            }
+            else {
+                document.getElementById("cost").disabled = "";
+                document.getElementById("prepayment").disabled = "";
+            }
+        });
+
+        $("#to_be_confirmed").change(function(){
+            if ($(this).prop('checked')) {
+                document.getElementById("cost").disabled = true;
+                document.getElementById("cost").required = false;
+                document.getElementById("free_of_charge").checked=false;
+                document.getElementById("prepayment").disabled = "";
+                document.getElementById("cost").value="";
+                document.getElementById("prepayment").value="0";
+            }
+            else {
+                document.getElementById("cost").disabled = "";
+            }
+        });
+
     });
+
+    
 </script>
 @endsection

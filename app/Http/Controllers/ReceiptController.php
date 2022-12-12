@@ -32,11 +32,15 @@ class ReceiptController extends Controller
             'brand' => 'required',
             'warranty_card' => 'required',
             'item_photo' => '',
+            'item_photo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
             'remark' => 'required',
-            'cost' => 'required',
-            'prepayment' => 'required',
+            'free_of_charge' => '',
+            'to_be_confirmed' => '',
+            'cost' => '',
+            'prepayment' => '',
 
         ]);
+        
         $receipt = new Receipt();
 
         $receipt->service_type = $request->post('service_type');
@@ -46,6 +50,8 @@ class ReceiptController extends Controller
         $receipt->warranty_card = $request->post('warranty_card');
         $receipt->user_name = Auth::user()->name;
         $receipt->remark = $request->post('remark');
+        $receipt->free_of_charge = $request->post('free_of_charge');
+        $receipt->to_be_confirmed = $request->post('to_be_confirmed');
         $receipt->cost = $request->post('cost');
         $receipt->prepayment = $request->post('prepayment');
 
@@ -55,8 +61,8 @@ class ReceiptController extends Controller
             {   
                 $destinationPath = storage_path('app\\public\\uploads\\');
                 $filename = Auth::user()->name.'-'.date('Ymd-his'). '.' . $image->getClientOriginalExtension();
-                $image_path[]=Image::make($image)->resize(1000, 1000)->save($destinationPath.$filename,90);
-                // $image_path[] = $image->store('uploads','public');
+                $image_path[]="uploads\\".$filename;
+                Image::make($image)->resize(1000, 1000)->save($destinationPath.$filename,90);
             }
 
             $receipt->remark = $receipt->remark."\r\n images of the item are saved in the system";

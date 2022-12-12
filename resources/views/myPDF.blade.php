@@ -316,7 +316,7 @@
                             <div class="total-right w-30 float-left text-bold" align="right">
                                 <p>{{$cost}}</p>
                                 <p>{{$prepayment}}</p>
-                                <p>TBC</p>
+                                <p>{{$balance}}</p>
                             </div>
                             <div style="clear: both;"></div>
                         </div> 
@@ -341,14 +341,12 @@
             </div>
         </div>
         <div style="clear: both;"></div>
-
         <div class="line-center" style="margin-top: 30px;"><span class="line-span">Receipt was created on a computer and is valid without the signature.</span></div>
-
+        <div style="clear: both;"></div>
     </div>
 
     <div class="noPrint">
             <hr>
-            
             <div class="text-right">
             
                 <a href="{{ route('home') }}"><button class="btn btn-danger">Close</button></a>
